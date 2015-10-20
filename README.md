@@ -7,10 +7,10 @@ Each HTML file contains an independent set of layout with internal CSS in itself
 <ul>
   <li>A standard 2-column with header layout 
     <br>
-    <img src='/img/header-with-2-column-1.png?raw=true' alt="start screen" height="400px" width='400'>
+    <img src='/img/header-with-2-column-1.png?raw=true' alt="start screen" height="400px">
   </li>
   <li>Responsive layout when width of the screen is 800 px (using media query)
     <br>
-    <img src='/img/header-with-2-column-2.png?raw=true' alt="start screen" height="400px" width='400'>
+    <img src='/img/header-with-2-column-2.png?raw=true' alt="start screen" height="400px">
   </li>
 </ul>
