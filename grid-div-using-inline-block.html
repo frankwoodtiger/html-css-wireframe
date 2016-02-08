@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<style>
+		/*basic reset*/
+		* {margin: 0; padding: 0; box-sizing: border-box;}
+		
+		[class$='wired'] {
+			/*solid border color(fallback)*/
+			border: 0px solid #aaa;
+			/*Cloud image sliced at 2px from all sides as border-image*/
+			border-image: url('img/clouds.png') 2 stretch;
+		}
+		
+		.wired {
+			border-width: 2px;
+		}
+		
+		body {
+			font: bold 12px/18px Delius; 
+			color: white;
+			background: #333;
+		}
+		
+		.container {
+			width: 960px; /* Setting the width of a block-level element will prevent it from stretching out to the edges of its container */
+			/* height: 840px; */ /* comment out height to disable overflow of column in continer since not setting height makes it fit the height of container */
+			margin: 50px auto; /* 50px for top and bottom, auto centered for left and right */
+			overflow: hidden; /* This will force the container to respect the height of all elements within it, regardless of floating elements. */
+		}
+		
+		.cell-container {
+			width: 800px; /* Setting the width of a block-level element will prevent it from stretching out to the edges of its container */
+			margin: auto; /* auto align left and right */
+			overflow: hidden; /* This will force the container to respect the height of all elements within it, regardless of floating elements. */
+			text-align: center; /* align the containing cell horizontally centered */
+		}
+		
+		.cell {
+			width: 150px;
+			height: 200px;
+			display: inline-block; /* make the cells behave like in-line element but still you can set width and height of them like a block */
+		}
+		
+		/* Responsive layout using media query `*/
+	    /* 3-column media query */
+		@media screen and (max-width: 800px) {
+			.container {
+				width: 510px;
+			}
+			
+			.cell-container {
+				width: 500px;
+			}
+		}
+		
+	    /* 2-column media query */
+		@media screen and (max-width: 600px) {
+			.container {
+				width: 410px;
+			}
+			
+			.cell-container {
+				width: 400px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container wired">
+			<div class="cell-container wired">
+				<div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div><div class="cell wired"></div>
+			</div>
+		</div>
+	</body>
+</html>
