@@ -1,0 +1,141 @@
+<html>
+	<head>
+		<style>
+		/*basic reset*/
+		* {margin: 0; padding: 0; box-sizing: border-box;}
+		ul { 
+			margin: 0;
+			padding: 0;
+			list-style:none; 
+		}
+		ul li { display: inline-block; }
+		a {
+			margin:0;
+			padding:0;
+			font-size:100%;
+			color: white;
+			text-decoration: none;
+		}
+		
+		[class$='wired'] {
+			/*solid border color(fallback)*/
+			border: 0px solid #aaa;
+			/*Cloud image sliced at 2px from all sides as border-image*/
+			border-image: url('img/clouds.png') 2 stretch;
+		}
+		
+		.wired {
+			border-width: 2px;
+		}
+		
+		body {
+			font: bold 12px/18px Delius; 
+			color: white;
+			background: #333;
+			overflow: auto;
+		}
+		
+		.container {
+			/* height: 840px; */ /* comment out height to disable overflow of column in continer since not setting height makes it fit the height of container */
+			margin: 50px auto; /* 50px for top and bottom, auto centered for left and right */
+			overflow: hidden; /* This will force the container to respect the height of all elements within it, regardless of floating elements. */
+		}
+		
+		.nav-container {
+
+		}
+		
+		.nav-container .top-bar .nav li {
+			margin: 0 10px;
+		}
+		
+		.nav-btn-container {
+			float: right;
+			margin: 6px 100px;
+		}
+		
+		/* ------------ Top bar ------------ */
+		.top-bar {
+			height: 40px;
+		}
+		/* ------------ Second bar ----------- */
+		.second-bar {
+		
+		}
+		
+		.logo-container {
+			margin: 20px;
+			width: 200px;
+			height: 75px;
+		}
+		
+		.horizontal-nav-bar {
+			width: inherit;
+			height: 60px;
+			white-space: nowrap;
+		}
+		
+		.horizontal-nav-bar .nav-dropdown {
+			width: 250px;
+			height: 45px;
+			margin: 5px 20px;
+			display: inline-block;
+		}
+		
+		.horizontal-nav-bar .search-bar {
+			width: 350px;
+			height: 45px;
+			margin: 5px 100px;
+			display: inline-block;
+		}
+		
+		.horizontal-nav-bar .mini-cart {
+			width: 150px;
+			height: 45px;
+			margin: 5px 20px;
+			display: inline-block;
+			float: right;
+		}
+		
+		/* ------------ Content ------------ */
+		.content-container {
+			height: 600px;
+		}
+		
+		.footer-container {
+			width: inherit; /* Inherits this property from its parent element. */
+			height: 100px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container wired">
+			<div class="nav-container wired">
+				<div class="top-bar wired">
+					<div class="nav-btn-container wired">
+						<ul class="nav">
+							<li><a href="#">LOGIN</a></li>
+							<li><a href="#">CONTACT US</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="second-bar wired">
+					<div class="logo-container wired">
+						<img href="#" alt="Company Logo" />
+					</div>
+					<div class="horizontal-nav-bar wired">
+						<div class="nav-dropdown wired">nav-dropdown</div>
+						<div class="search-bar wired">search-bar</div>
+						<div class="mini-cart wired">mini-cart</div>
+					</div>
+				</div>
+			</div>
+			<div class="content-container wired">
+				
+			</div>
+			<div class="footer-container wired">
+			
+			</div>
+		</div>
+	</body>
+</html>
