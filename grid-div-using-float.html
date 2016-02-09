@@ -29,13 +29,14 @@
 		}
 		
 		.cell-container {
-			width: 800px; /* Setting the width of a block-level element will prevent it from stretching out to the edges of its container */
+			/* Setting the width of a block-level element will prevent it from stretching out to the edges 
+			   of its container, 750px contains 5 150px-div's + 2 border width of the wireframe. */
+			width: 754px; 
 			margin: auto; /* auto align left and right */
 			overflow: hidden; /* This will force the container to respect the height of all elements within it, regardless of floating elements. */
 		}
 		
 		.cell {
-			margin: 5px 0px;
 			width: 150px;
 			height: 200px;
 			float: left;
@@ -48,15 +49,38 @@
 			 More information on the formula used: https://css-tricks.com/how-nth-child-works/
 		*/
 		.cell:nth-child(5n + 1) {
-			clear: left;  /*  No floating elements allowed on the left side i.e. start a new row on every forth element */
+			clear: left;  /*  No floating elements allowed on the left side i.e. start a new row on every fifth element */
 			border: 1px solid red;
 		}
 		
+		@media(max-width:850px) {
+			.container {
+				width: 600px;
+			}
+			
+			.cell-container {
+				width:454px;
+			}
+			
+			.cell:nth-child(5n + 1) {
+				clear: none;  /*  No floating elements allowed on the left side i.e. start a new row on every fifth element */
+				/*solid border color(fallback)*/
+				border: 0px solid #FFFF;
+				/*Cloud image sliced at 2px from all sides as border-image*/
+				border-image: url('img/clouds.png') 2 stretch;
+			}
+			.cell:nth-child(3n + 1) {
+				clear: left;  /*  No floating elements allowed on the left side i.e. start a new row on every fifth element */
+				border: 1px solid yellow;
+			}
+		}
 		</style>
 	</head>
 	<body>
 		<div class="container wired">
 			<div class="cell-container wired">
+				<div class="cell wired"></div>
+				<div class="cell wired"></div>
 				<div class="cell wired"></div>
 				<div class="cell wired"></div>
 				<div class="cell wired"></div>
