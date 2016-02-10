@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" media="all" href="css/foundation.min.css">
+		<style>
+		/*basic reset*/
+		* {margin: 0; padding: 0; box-sizing: border-box;}
+		
+		[class$='wired'] {
+			/*solid border color(fallback)*/
+			border: 0px solid #aaa;
+			/*Cloud image sliced at 2px from all sides as border-image*/
+			border-image: url('img/clouds.png') 2 stretch;
+		}
+		
+		.wired {
+			border-width: 2px;
+		}
+		
+		body {
+			/* 
+			   It's very important to give fixed width to body to make the whole page rigid if 
+			   intented, it will make everything wrap and float if not set 
+			*/
+			/* width: 1400px; */ 
+			/* width: auto; */ /* Default behavior. This will apply whatever the viewport width is, and everything inside will wrap and float */
+			font: bold 12px/18px Delius; 
+			color: white;
+			background: #333;
+		}
+		
+		.container {
+			width: 95%;
+			/* comment out height to disable overflow of column in continer since not setting height makes it fit the height of container */
+			/* height: 840px; */ 
+			margin: 50px auto; /* 50px for top and bottom, auto centered for left and right */		
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container wired">
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li>
+					<a>Item 1</a>
+					<ul class="menu">
+						<li><a href="#">Item 1A</a></li>
+						<li><a href="#">Item 1B</a></li>
+						<li><a href="#">Item 1C</a></li>
+					</ul>
+				</li>
+				<li>
+					<a>Item 2</a>
+					<ul class="menu">
+						<li><a href="#">Item 2A</a></li>
+						<li><a href="#">Item 2B</a></li>
+						<li><a href="#">Item 2C</a></li>
+					</ul>
+				</li>
+				<li>
+					<a>Item 3</a>
+					<ul class="menu">
+						<li><a href="#">Item 3A</a></li>
+						<li><a href="#">Item 3B</a></li>
+						<li><a href="#">Item 3C</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/foundation.min.js"></script>
+	<script type="text/javascript" src="js/foundation.core.js"></script>
+	<script type="text/javascript" src="js/foundation.util.nest.js"></script>
+	<script type="text/javascript" src="js/foundation.util.box.js"></script>
+	<script type="text/javascript" src="js/foundation.util.keyboard.js"></script>
+	<script type="text/javascript" src="js/foundation.dropdownMenu.js"></script>
+	<script>
+	$(function() {
+		var element = $('.dropdown');
+		var elem = new Foundation.DropdownMenu(element);
+	});
+	
+	</script>
+</html>

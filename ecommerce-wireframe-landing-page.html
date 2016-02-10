@@ -16,6 +16,38 @@
 			color: white;
 			text-decoration: none;
 		}
+		input[type=text], input[type=password] {
+			border: none;
+			border-radius: 3px;
+			box-shadow: none;
+			background-color: #ffffff;
+			padding: 0.5em;
+			height: 40px;
+			line-height: 40px;
+		}
+		.btn {
+			border-style: solid;
+			border-width: 0px;
+			cursor: pointer;
+			font-family: "hind", Helvetica, Arial, sans-serif;
+			line-height: normal;
+			position: relative;
+			text-decoration: none;
+			text-align: center;
+			-webkit-appearance: none;
+			border-radius: 3px;
+			display: inline-block;
+			font-size: 1.14286rem;
+			background-color: #3f9c35;
+			border-color: #337d2a;
+			color: #fff;
+			transition: background-color 300ms ease-out;
+			font-weight: bold;
+			height: 30px;
+		}
+		.btn:hover {
+			background-color: #23561D;
+		}
 		
 		[class$='wired'] {
 			/*solid border color(fallback)*/
@@ -29,113 +61,157 @@
 		}
 		
 		body {
+			/* 
+			   It's very important to give fixed width to body to make the whole page rigid if 
+			   intented, it will make everything wrap and float if not set 
+			*/
+			/* width: 1400px; */ 
+			/* width: auto; */ /* Default behavior. This will apply whatever the viewport width is, and everything inside will wrap and float */
 			font: bold 12px/18px Delius; 
 			color: white;
 			background: #333;
-			overflow: auto;
 		}
 		
 		.container {
-			/* height: 840px; */ /* comment out height to disable overflow of column in continer since not setting height makes it fit the height of container */
-			margin: 50px auto; /* 50px for top and bottom, auto centered for left and right */
-			overflow: hidden; /* This will force the container to respect the height of all elements within it, regardless of floating elements. */
+			width: 95%;
+			/* comment out height to disable overflow of column in continer since not setting height makes it fit the height of container */
+			/* height: 840px; */ 
+			margin: 50px auto; /* 50px for top and bottom, auto centered for left and right */		
 		}
 		
-		.nav-container {
+		/* ------------ Top bar ------------ */
+		.first-bar {
+			width: auto;
+			height: 40px;
 
-		}
-		
-		.nav-container .top-bar .nav li {
-			margin: 0 10px;
 		}
 		
 		.nav-btn-container {
 			float: right;
-			margin: 6px 100px;
+			margin: 6px 45px;
 		}
 		
-		/* ------------ Top bar ------------ */
-		.top-bar {
-			height: 40px;
+		.nav-btn-container > .nav li {
+			margin: 0 10px;
+			display: inline-block;
 		}
+		
 		/* ------------ Second bar ----------- */
 		.second-bar {
-		
+
 		}
 		
 		.logo-container {
-			margin: 20px;
+			margin: 10px 45px;
 			width: 200px;
 			height: 75px;
 		}
 		
 		.horizontal-nav-bar {
-			width: inherit;
-			height: 60px;
-			white-space: nowrap;
+			height: 70px;
+			text-align: center; /* aligning the center search-bar div */
 		}
 		
 		.horizontal-nav-bar .nav-dropdown {
 			width: 250px;
-			height: 45px;
-			margin: 5px 20px;
-			display: inline-block;
+			height: 50px;
+			margin: 5px 0px 5px 45px; /* top right bottom left */
+			float: left;
 		}
 		
 		.horizontal-nav-bar .search-bar {
-			width: 350px;
-			height: 45px;
-			margin: 5px 100px;
-			display: inline-block;
+			width: 550px;
+			height: 50px;
+			margin: 5px auto;
+			display: inline-block /* aligning trick used with text-align in containter */
 		}
 		
 		.horizontal-nav-bar .mini-cart {
 			width: 150px;
-			height: 45px;
-			margin: 5px 20px;
-			display: inline-block;
+			height: 50px;
+			margin: 5px 45px 5px 0px;
 			float: right;
 		}
 		
 		/* ------------ Content ------------ */
 		.content-container {
 			height: 600px;
+			display: table-cell;    /* vertical alignment*/
+			vertical-align: middle;  /* vertical alignment for element contained in the container */
 		}
 		
-		.footer-container {
-			width: inherit; /* Inherits this property from its parent element. */
-			height: 100px;
+		.login-form-container {
+			width: 400px;
+			height: 310px;
+			margin-left: 30px;
+		}
+		
+		.login-form {
+			padding: 35px 30px;
+			display: table;
+		}
+		
+		.login-form > *{
+			width: 100%;
+			margin-bottom: 20px;
+		}
+		
+		.login-btn {
+			margin: 20px 0;
+			width: 100%;
+		}
+		
+		.footer-container-1 {
+			height: 150px;
+		}
+		
+		.footer-container-2 {
+			height: 50px;
+		}
+		
+		/* ------------ media query ------------ */
+		@media( max-width:1140px) {
+			body {
+				width: 1140px; /* set width to stop wrapping and floating */
+			}
 		}
 		</style>
 	</head>
 	<body>
 		<div class="container wired">
 			<div class="nav-container wired">
-				<div class="top-bar wired">
-					<div class="nav-btn-container wired">
+				<div class="first-bar wired">
+					<div class="nav-btn-container">
 						<ul class="nav">
 							<li><a href="#">LOGIN</a></li>
 							<li><a href="#">CONTACT US</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="second-bar wired">
+				<div class="second-bar">
 					<div class="logo-container wired">
 						<img href="#" alt="Company Logo" />
 					</div>
-					<div class="horizontal-nav-bar wired">
+					<div class="horizontal-nav-bar">
 						<div class="nav-dropdown wired">nav-dropdown</div>
 						<div class="search-bar wired">search-bar</div>
 						<div class="mini-cart wired">mini-cart</div>
 					</div>
 				</div>
 			</div>
-			<div class="content-container wired">
-				
+			<div class="content-container">
+				<div class="login-form-container wired">
+					<div class="login-form">
+						<h3>Login</h3>
+						<input id="j_username" name="j_username" class="text" placeholder="User Name" type="text" value="">
+						<input id="j_password" name="j_password" class="text password" placeholder="Password" type="password" value="">
+						<a href="#" class="password-forgotten">Forgot Password</a>
+						<button type="submit" class="login-btn btn">Login</button>
+					</div>
+				</div>
 			</div>
-			<div class="footer-container wired">
-			
-			</div>
+			<div class="footer-container-1 wired"></div>
+			<div class="footer-container-2 wired"></div>
 		</div>
 	</body>
 </html>

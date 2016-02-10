@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<style>
+		/*basic reset*/
+		* {margin: 0; padding: 0; box-sizing: border-box;}
+		
+		[class$='wired'] {
+			/*solid border color(fallback)*/
+			border: 0px solid #aaa;
+			/*Cloud image sliced at 2px from all sides as border-image*/
+			border-image: url('img/clouds.png') 2 stretch;
+		}
+		
+		.wired {
+			border-width: 2px;
+		}
+		
+		body {
+			font: bold 12px/18px Delius; 
+			color: white;
+			background: #333;
+		}
+		
+		.container {
+			width: 95%;
+			/* height: 840px; */ /* comment out height to disable overflow of column in continer */
+			margin: 50px auto; /* 50px for top and bottom, auto centered for left and right */
+		}
+		
+		.container-div {
+			height: 300px;
+			text-align: center; /* Trick for aligning midlle div */
+		}
+		
+		[class^="nested-div"] {
+			width: 200px;
+			height: 97%;
+			margin: 5px;
+		}
+		
+		.nested-div-1 {
+			float: left;
+		}
+		
+		.nested-div-2 {
+			display: inline-block; /* This is the trick for align the middle div with the use of text-align center in the container */
+		}
+		
+		.nested-div-3 {
+			float: right;
+		}
+		
+		.nested-div-4 {
+			float: left;
+		}
+		
+		.center-div {
+			display: inline-block; /* This is the trick for align the middle div with the use of text-align center in the container */
+		}
+			.nested-div-5 {
+				float: left;
+			}
+			.nested-div-6 {
+				float: left;
+			}
+			.nested-div-7 {
+				float: left;
+			}
+			
+		.nested-div-8 {
+			float: right;
+		}
+		
+		
+		
+		/* -------------- media query for disabling wraping of div --------------- */
+		@media(max-width:1120px) {
+			body {
+				width: 1120px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container wired">
+			<div class="container-div wired">
+				<div class="nested-div-1 wired"></div>
+				<div class="nested-div-2 wired"></div>
+				<div class="nested-div-3 wired"></div>
+			</div>
+			<div class="container-div wired">
+				<div class="nested-div-4 wired"></div>
+				<div class="center-div wired">
+					<div class="nested-div-5 wired"></div>
+					<div class="nested-div-6 wired"></div>
+					<div class="nested-div-7 wired"></div>
+				</div>
+				<div class="nested-div-8 wired"></div>
+			</div>
+		</div>
+	</body>
+</html>
