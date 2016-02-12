@@ -3,6 +3,7 @@
 		<style>
 		/*basic reset*/
 		* {margin: 0; padding: 0; box-sizing: border-box;}
+		ul { list-style-type: none; }
 		
 		[class$='wired'] {
 			/*solid border color(fallback)*/
@@ -28,9 +29,8 @@
 		}
 		
 		.container {
-			width: 95%;
-			/* comment out height to disable overflow of column in continer since not setting height makes it fit the height of container */
-			height: 200px; 
+			width: 800px; /* hardcoded width that matches the search module */
+			height: 100px; /* hardcoded height that matches the search module */
 			margin: 50px auto; /* 50px for top and bottom, auto centered for left and right */		
 		}
 		
@@ -40,6 +40,8 @@
 			top: -30000px;
 			left: -30000px;
 		}
+		.left { float: left !important; }
+		
 		/* We use this to get basic styling on all basic form elements (partial portion) */
 		input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
 		  -webkit-appearance: none;
@@ -60,18 +62,46 @@
 		  box-sizing: border-box;
 		  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
 		}
-		 
 		
+		/* Default button */
+		button, .button {
+			border-style: solid;
+			border-width: 0px;
+			cursor: pointer;
+			font-family: "hind", Helvetica, Arial, sans-serif;
+			font-weight: normal;
+			line-height: normal;
+			margin: 0 0 1.42857rem;
+			position: relative;
+			text-decoration: none;
+			text-align: center;
+			-webkit-appearance: none;
+			-webkit-border-radius: 0;
+			height: 50px;
+			border-radius: 4px;
+			display: inline-block;
+			padding-top: 7px;
+			padding-right: 1.85714rem;
+			padding-bottom: 1rem;
+			padding-left: 1.85714rem;
+			font-size: 1.14286rem;
+			background-color: #3f9c35;
+			border-color: #337d2a;
+			color: #fff;
+			transition: background-color 300ms ease-out;
+		}
+		
+		.siteSearch, .control-group{
+			width: 100%;
+		}
 		/* ---------- search dropdown ----------- */
 		.productTypeHeader {
 			padding: 0 10px;
 			height: 40px;
 			line-height: 40px;
-			width: 125px;
+			width: 125px; /* the width of search all */
 			background-color: #f0f0f0;
 			color: #646464;
-			margin-left: 60px;
-			margin-right: 0px;
 			border-radius: 5px 0 0 5px;
 			font-size: 1.07143rem;
 			font-weight: bold;
@@ -88,7 +118,8 @@
 		}
 		
 		.productTypeHeader .selected-condition {
-			width: 85px;
+			/* width: 85px; */ /* text width */
+			width: 209px;
 			display: block;
 			white-space: nowrap;
 			overflow: hidden;
@@ -98,7 +129,8 @@
 		.productTypeHeader .search-condition {
 			padding-left: 10px;
 			position: absolute;
-			width: 230px;
+			/* width: 230px; */
+			width: 250px;
 			left: 0;
 			margin-left: 0;
 			background-color: #646464;
@@ -112,11 +144,11 @@
 		
 		.productTypeHeader .search-condition li {
 			margin: 13px 0;
-			cursor: pointer; 
+			cursor: pointer;
 		}
 		  
 		
-		.productTypeHeader .search-triangle {
+		.search-triangle {
 			content: "";
 			display: block;
 			width: 0;
@@ -129,22 +161,18 @@
 			right: 10px; 
 		}
 		.productTypeHeader:hover .search-triangle {
-			content: "";
-			display: block;
-			width: 0;
-			height: 0;
-			border: inset 6px;
-			border-color: #ffffff transparent transparent transparent;
-			border-top-style: solid; 
+			border-color: #ffffff transparent transparent transparent; 
 		}
 		
 		/* ------------ input text box ------------ */
 		.inputSearch{
-			margin-left: 2px !important;
+			margin-left: 0px !important; /* gap between search dropdown and input text */
 			float: left;
-			width: 330px;
+			width: 350px;
 		}
 		
+		/* This is somehow not applied */
+		/*
 		input#search {
 			-webkit-border-top-right-radius: 1px;
 			-webkit-border-bottom-right-radius: 1px;
@@ -155,12 +183,50 @@
 			color: #333;
 			vertical-align: top;
 		}
+		*/
+		
+		input[type=text] {
+			background-color: #f0f0f0;
+			color: #646464;
+			border: none;
+			box-shadow: none;
+			height: 40px;
+			border-radius: 0 5px 5px 0;
+		}
+		
+		/* ------------ search submit box ------------ */
+		.siteSearchSubmit {
+			bottom: 58px;
+			float: left;
+			height: 40px;
+			left: 300px;
+			position: relative;
+			border-radius: 0 5px 5px 0;
+			padding: 0;
+			padding-left: 10px;
+			width: 53px; 
+		}
+		
+		.icon-search-white {
+			background: transparent url('img/magnifying_glass_white.svg') no-repeat center center;
+			width: 30px;
+			height: 30px;
+			display: block;
+		}
+		
+		/* --------- media query for disabling wrapping --------------*/
+		
+		@media(max-width:600px) {
+			body {
+				width:600px; 
+			}
+		}
 		</style>
 	</head>
 	<body>
 		<div class="container wired">
 			<div class="siteSearch">
-				<form name="search_form" method="get" action="/spx/en/USD/search/">
+				<form name="search_form" method="get" action="#">
 					<input type="hidden" id="productType" name="productType" value="All">
 					<div class="control-group left">
 						<div class="controls productTypeHeader span-3">
@@ -175,11 +241,11 @@
 						</div>
 						<label class="control-label skip" for="search">Search</label>
 						<div class="controls inputSearch">
+							<input type="hidden" id="placeholderAll" value="Enter Keyword, Model, or Item Number">
 							<input type="hidden" id="placeholderPart" value="Enter Keyword, Model, or Item Number">
 							<input type="hidden" id="placeholderEquipment" value="Enter Keyword or Model">
 							<input type="hidden" id="placeholderSerial" value="Enter Serial Number">
 							<input type="hidden" id="placeholderEquipmentBySKU" value="Enter Item Number">
-							<input type="hidden" id="placeholderAll" value="Enter Keyword, Model, or Item Number">
 							<input id="search" class="siteSearchInput left ui-autocomplete-input" type="text" name="text" value="" maxlength="100" placeholder="Enter Keyword, Model, or Item Number" data-options="{&quot;autocompleteUrl&quot; : &quot;/spx/en/USD/search/autocomplete/SearchBox&quot;,&quot;minCharactersBeforeRequest&quot; : &quot;3&quot;,&quot;waitTimeBeforeRequest&quot; : &quot;500&quot;,&quot;displayProductImages&quot; : true}" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
 							<button class="siteSearchSubmit" type="submit"><span class="icon-search-white"></span></button>
 						</div>
@@ -193,13 +259,36 @@
 	<script>
 	// search dropdown item
 	$('.search-condition li').click(function(e) {
-		var text = $(this).html();
+		// search-option-width width mapping, works well if we have small set of search option
+		var searchOptionWidthMap = {
+			"All": "125px",
+			"Part": "80px",
+			"Equipment": "127px",
+			"EquipmentBySKU" : "252px"
+		}
+		
 		var searchTypeValue = $(this).attr('data-searchtype');
-		$('.selected-condition').html(text);
-		$('.selected-condition').attr('title',text);
+		var text = $(this).html();
+		var textLength = text.length;
+		// var width = textLength*10 + 25 + "px"; // one way to do it is by text length, especially when you have many search option, but using mapping is more accurate
+		var width = searchOptionWidthMap[searchTypeValue];
+		var currentWidth = $('.productTypeHeader').css('width'); 
+		var diff = parseInt(currentWidth.slice(0, -2)) - parseInt(width.slice(0, -2)); /* slice to trim the px out */
+		// console.log(diff);
+		
+		$('.selected-condition').html(text)
+								.attr('title',text);
 		$('#productType').val(searchTypeValue);
 		var placeHolder = $('#placeholder'+searchTypeValue).val();
 		$('#search').attr('placeholder',placeHolder);
+		
+		$('.productTypeHeader').css('width', width);
+		
+		var inputSearch = $('.inputSearch');
+		inputSearch.css('width', parseInt(inputSearch.css('width').slice(0, -2)) + diff);
+		var siteSearchSubmit = $('.siteSearchSubmit');
+		
+		siteSearchSubmit.css('left', parseInt(siteSearchSubmit.css('left').slice(0, -2)) + diff);
 	});
 	</script>
 </html>
