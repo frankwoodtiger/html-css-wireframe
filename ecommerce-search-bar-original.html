@@ -1,0 +1,276 @@
+<html>
+	<head>
+		<style>
+		/*basic reset*/
+		* {margin: 0; padding: 0; box-sizing: border-box;}
+		ul { list-style-type: none; }
+		
+		[class$='wired'] {
+			/*solid border color(fallback)*/
+			border: 0px solid #aaa;
+			/*Cloud image sliced at 2px from all sides as border-image*/
+			border-image: url('img/clouds.png') 2 stretch;
+		}
+		
+		.wired {
+			border-width: 2px;
+		}
+		
+		body {
+			/* 
+			   It's very important to give fixed width to body to make the whole page rigid if 
+			   intented, it will make everything wrap and float if not set 
+			*/
+			/* width: 1400px; */ 
+			/* width: auto; */ /* Default behavior. This will apply whatever the viewport width is, and everything inside will wrap and float */
+			font: bold 12px/18px Delius; 
+			color: white;
+			background: #333;
+		}
+		
+		.container {
+			width: 95%;
+			/* comment out height to disable overflow of column in continer since not setting height makes it fit the height of container */
+			height: 200px; 
+			margin: 50px auto; /* 50px for top and bottom, auto centered for left and right */		
+		}
+		
+		.hide { display: none; }
+		.skip {
+			position: absolute;
+			top: -30000px;
+			left: -30000px;
+		}
+		
+		
+		
+		/* We use this to get basic styling on all basic form elements (partial portion) */
+		input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+		  -webkit-appearance: none;
+		  -webkit-border-radius: 0px;
+		  background-color: #fff;
+		  font-family: inherit;
+		  border: 1px solid #cccccc;
+		  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		  color: rgba(0, 0, 0, 0.75);
+		  display: block;
+		  font-size: 1rem;
+		  margin: 0 0 1.14286rem 0;
+		  padding: 0.57143rem;
+		  height: 2.64286rem;
+		  width: 100%;
+		  -webkit-box-sizing: border-box;
+		  -moz-box-sizing: border-box;
+		  box-sizing: border-box;
+		  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+		}
+		
+		/* Default button */
+		button, .button {
+			border-style: solid;
+			border-width: 0px;
+			cursor: pointer;
+			font-family: "hind", Helvetica, Arial, sans-serif;
+			font-weight: normal;
+			line-height: normal;
+			margin: 0 0 1.42857rem;
+			position: relative;
+			text-decoration: none;
+			text-align: center;
+			-webkit-appearance: none;
+			-webkit-border-radius: 0;
+			height: 50px;
+			border-radius: 4px;
+			display: inline-block;
+			padding-top: 7px;
+			padding-right: 1.85714rem;
+			padding-bottom: 1rem;
+			padding-left: 1.85714rem;
+			font-size: 1.14286rem;
+			background-color: #3f9c35;
+			border-color: #337d2a;
+			color: #fff;
+			transition: background-color 300ms ease-out;
+		}
+		
+		/* ---------- search dropdown ----------- */
+		.productTypeHeader {
+			padding: 0 10px;
+			height: 40px;
+			line-height: 40px;
+			width: 125px;
+			background-color: #f0f0f0;
+			color: #646464;
+			margin-left: 60px;
+			margin-right: 0px;
+			border-radius: 5px 0 0 5px;
+			font-size: 1.07143rem;
+			font-weight: bold;
+			position: relative; 
+			
+			/* added customly */
+			display: inline-block;
+			float: left;
+		}
+		.productTypeHeader:hover {
+			background-color: #646464;
+			color: #ffffff;
+			border-radius: 5px 0 0 0; 
+		}
+		
+		.productTypeHeader .selected-condition {
+			width: 85px;
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		
+		.productTypeHeader .search-condition {
+			padding-left: 10px;
+			position: absolute;
+			width: 230px;
+			left: 0;
+			margin-left: 0;
+			background-color: #646464;
+			border-radius: 0 0 5px 5px;
+			font-size: 1.07143rem;
+			z-index: 200; 
+		}
+		.productTypeHeader:hover .search-condition {
+			display: block; 
+		}
+		
+		.productTypeHeader .search-condition li {
+			margin: 13px 0;
+			cursor: pointer; 
+		}
+		  
+		
+		.productTypeHeader .search-triangle {
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			border: inset 6px;
+			border-color: #646464 transparent transparent transparent;
+			border-top-style: solid;
+			position: absolute;
+			top: 15px;
+			right: 10px; 
+		}
+		.productTypeHeader:hover .search-triangle {
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			border: inset 6px;
+			border-color: #ffffff transparent transparent transparent;
+			border-top-style: solid; 
+		}
+		
+		/* ------------ input text box ------------ */
+		.inputSearch{
+			margin-left: 2px !important; /* gap between search dropdown and input text */
+			float: left;
+			width: 330px;
+		}
+		
+		/* This is somehow not applied */
+		/*
+		input#search {
+			-webkit-border-top-right-radius: 1px;
+			-webkit-border-bottom-right-radius: 1px;
+			-moz-border-radius-topright: 1px;
+			-moz-border-radius-bottomright: 1px;
+			border-top-right-radius: 1px;
+			border-bottom-right-radius: 1px;
+			color: #333;
+			vertical-align: top;
+		}
+		*/
+		
+		input[type=text] {
+			background-color: #f0f0f0;
+			color: #646464;
+			border: none;
+			box-shadow: none;
+			height: 40px;
+			border-radius: 0 5px 5px 0;
+		}
+		
+		/* ------------ search submit box ------------ */
+		.siteSearchSubmit {
+			bottom: 58px;
+			float: left;
+			height: 40px;
+			left: 277px;
+			position: relative;
+			border-radius: 0 5px 5px 0;
+			padding: 0;
+			padding-left: 10px;
+			width: 53px; 
+		}
+		
+		.icon-search-white {
+			background: transparent url('img/magnifying_glass_white.svg') no-repeat center center;
+			width: 30px;
+			height: 30px;
+			display: block;
+		}
+		
+		/* --------- media query for disabling wrapping --------------*/
+		
+		@media(max-width:600px) {
+			body {
+				width:600px; 
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container wired">
+			<div class="siteSearch">
+				<form name="search_form" method="get" action="/spx/en/USD/search/">
+					<input type="hidden" id="productType" name="productType" value="All">
+					<div class="control-group left">
+						<div class="controls productTypeHeader span-3">
+							<span class="selected-condition" title="Search All">Search All</span>
+							<div class="search-triangle"></div>
+							<ul class="search-condition hide">
+								<li data-searchtype="All">Search All</li>
+								<li data-searchtype="Part">Parts</li>
+								<li data-searchtype="Equipment">Equipment</li>
+								<li data-searchtype="EquipmentBySKU">Equipment by Item Number</li>
+							</ul>	
+						</div>
+						<label class="control-label skip" for="search">Search</label>
+						<div class="controls inputSearch">
+							<input type="hidden" id="placeholderPart" value="Enter Keyword, Model, or Item Number">
+							<input type="hidden" id="placeholderEquipment" value="Enter Keyword or Model">
+							<input type="hidden" id="placeholderSerial" value="Enter Serial Number">
+							<input type="hidden" id="placeholderEquipmentBySKU" value="Enter Item Number">
+							<input type="hidden" id="placeholderAll" value="Enter Keyword, Model, or Item Number">
+							<input id="search" class="siteSearchInput left ui-autocomplete-input" type="text" name="text" value="" maxlength="100" placeholder="Enter Keyword, Model, or Item Number" data-options="{&quot;autocompleteUrl&quot; : &quot;/spx/en/USD/search/autocomplete/SearchBox&quot;,&quot;minCharactersBeforeRequest&quot; : &quot;3&quot;,&quot;waitTimeBeforeRequest&quot; : &quot;500&quot;,&quot;displayProductImages&quot; : true}" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+							<button class="siteSearchSubmit" type="submit"><span class="icon-search-white"></span></button>
+						</div>
+					</div>
+				</form>
+				<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 0px; left: 0px; display: none;"></ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script>
+	// search dropdown item
+	$('.search-condition li').click(function(e) {
+		var text = $(this).html();
+		var searchTypeValue = $(this).attr('data-searchtype');
+		$('.selected-condition').html(text);
+		$('.selected-condition').attr('title',text);
+		$('#productType').val(searchTypeValue);
+		var placeHolder = $('#placeholder'+searchTypeValue).val();
+		$('#search').attr('placeholder',placeHolder);
+	});
+	</script>
+</html>
